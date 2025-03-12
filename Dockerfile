@@ -17,7 +17,7 @@ COPY . .
 # RUN mkdir -p models
 
 # Set environment variables
-ENV MODEL_PATH=cifar10_mobilenet_final.h5
+ENV MODEL_PATH=/app/cifar10_mobilenet_final.h5
 ENV PORT=10000
 
 # Expose the port
