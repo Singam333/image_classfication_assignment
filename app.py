@@ -15,13 +15,24 @@ users = {
 }
 
 MODEL_PATH = os.environ.get('MODEL_PATH', 'cifar10_mobilenet_final.h5')
+
+if os.path.exists(MODEL_PATH):
+    logger.info(f"Model file found at {MODEL_PATH}")
+else:
+    logger.error(f"Model file NOT found at {MODEL_PATH}")
+    # List contents of current directory to debug
+    logger.info(f"Contents of current directory: {os.listdir('.')}")
+
 try:
     model = tf.keras.models.load_model(MODEL_PATH)
+    logger.info(f"model loaded")
 except FileNotFoundError:
     print(f"Error: Model file not found at {MODEL_PATH}")
+    logger.info(f"Error: Model file not found at {MODEL_PATH}")
     model = None
 except Exception as e:
     print(f"Error loading model: {e}")
+    f"Error: loading the model {e}"
     model = None
 
 class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer',
