@@ -19,7 +19,6 @@ MODEL_PATH = os.environ.get('MODEL_PATH', 'cifar10_mobilenet_final.h5')
 
 try:
     model = tf.keras.models.load_model(MODEL_PATH)
-    logger.info(f"model loaded")
 except FileNotFoundError:
     print(f"Error: Model file not found at {MODEL_PATH}")
     model = None
